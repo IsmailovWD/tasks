@@ -1,14 +1,31 @@
-import './assets/main.css'
+import { createApp } from 'vue';
+import './plugins/assets';
+import { setupAppVersionNotification, setupDayjs, setupIconifyOffline, setupLoading, setupNProgress } from './plugins';
+import { setupStore } from './store';
+import { setupRouter } from './router';
+import { setupI18n } from './locales';
+import App from './App.vue';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+async function setupApp() {
+  setupLoading();
 
-import App from './App.vue'
-import router from './router'
+  setupNProgress();
 
-const app = createApp(App)
+  setupIconifyOffline();
 
-app.use(createPinia())
-app.use(router)
+  setupDayjs();
 
-app.mount('#app')
+  const app = createApp(App);
+
+  setupStore(app);
+
+  await setupRouter(app);
+
+  setupI18n(app);
+
+  setupAppVersionNotification();
+
+  app.mount('#app');
+}
+
+setupApp();
