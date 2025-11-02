@@ -10,7 +10,8 @@ import { ProfileModule } from './profile/profile.module';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(
-      'mongodb://ismailovwd_db_user:TRJGTMrORRVkSzGH@cluster0.njwclrr.mongodb.net/?appName=Cluster0',
+      process.env.MONGO_URI ||
+        'mongodb+srv://ismailovwd_db_user:TRJGTMrORRVkSzGH@cluster0.njwclrr.mongodb.net/?appName=Cluster0',
     ),
     UsersModule,
     AuthModule,
