@@ -21,8 +21,7 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             config_1.ConfigModule.forRoot({ isGlobal: true }),
-            mongoose_1.MongooseModule.forRoot(process.env.MONGO_URI ||
-                'mongodb+srv://ismailovwd_db_user:TRJGTMrORRVkSzGH@cluster0.njwclrr.mongodb.net/?appName=Cluster0'),
+            mongoose_1.MongooseModule.forRoot('mongodb+srv://ismailovwd_db_user:TRJGTMrORRVkSzGH@cluster0.njwclrr.mongodb.net/?appName=Cluster0'),
             users_module_1.UsersModule,
             auth_module_1.AuthModule,
             telegram_module_1.TelegramModule,
