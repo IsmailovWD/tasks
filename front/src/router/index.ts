@@ -1,30 +1,24 @@
-import type { App } from 'vue';
-import {
-  type RouterHistory,
-  createMemoryHistory,
-  createRouter,
-  createWebHashHistory,
-  createWebHistory
-} from 'vue-router';
-import { createBuiltinVueRoutes } from './routes/builtin';
-import { createRouterGuard } from './guard';
+import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
+import Login from "@/views/Login.vue";
+import Profile from "@/views/Profile.vue";
+import Register from "@/views/Register.vue";
 
-const { VITE_ROUTER_HISTORY_MODE = 'history', VITE_BASE_URL } = import.meta.env;
-
-const historyCreatorMap: Record<Env.RouterHistoryMode, (base?: string) => RouterHistory> = {
-  hash: createWebHashHistory,
-  history: createWebHistory,
-  memory: createMemoryHistory
-};
-
-export const router = createRouter({
-  history: historyCreatorMap[VITE_ROUTER_HISTORY_MODE](VITE_BASE_URL),
-  routes: createBuiltinVueRoutes()
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    { path: "/", redirect: "/profile" },
+    { path: "/login", component: Login },
+    { path: "/profile", component: Profile },
+    { path: "/register", component: Register },
+  ],
 });
 
-/** Setup Vue Router */
-export async function setupRouter(app: App) {
-  app.use(router);
-  createRouterGuard(router);
-  await router.isReady();
-}
+router.beforeEach(async (to) => {
+  const auth = useAuthStore();
+  if (!auth.token && to.path !== "/login" && to.path !== "/register") {
+    return "/login";
+  }
+});
+
+export default router;
