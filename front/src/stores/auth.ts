@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-const API_URL = "https://tasks-cw1k.onrender.com/api"; // NestJS backend manzili
+const API_URL = "https://tasks-xl0l.onrender.com/api"; // NestJS backend manzili
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
