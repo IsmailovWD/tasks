@@ -53,7 +53,7 @@ async function bootstrap() {
     app.setGlobalPrefix('api');
     app.use((0, cookie_parser_1.default)());
     app.useGlobalPipes(new common_1.ValidationPipe({ whitelist: true }));
-    await app.listen(process.env.PORT || 3000);
+    await app.listen(process.env.PORT || 3000, '0.0.0.0');
     console.log(`App running on ${process.env.PORT || 3000}`);
 }
 bootstrap();
