@@ -10,7 +10,7 @@ import { ProfileModule } from './profile/profile.module';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(
-      'mongodb+srv://ismailovwd_db_user:TRJGTMrORRVkSzGH@cluster0.njwclrr.mongodb.net/?appName=Cluster0',
+      'mongodb+srv://ismailovwd_db_user:8wzJqhmYFs6tbsb4@cluster0.jkzlec8.mongodb.net/?appName=Cluster0&retryWrites=true&w=majority',
       {
         retryWrites: true,
         w: 'majority',

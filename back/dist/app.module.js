@@ -21,7 +21,7 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             config_1.ConfigModule.forRoot({ isGlobal: true }),
-            mongoose_1.MongooseModule.forRoot('mongodb+srv://ismailovwd_db_user:TRJGTMrORRVkSzGH@cluster0.njwclrr.mongodb.net/?appName=Cluster0', {
+            mongoose_1.MongooseModule.forRoot('mongodb+srv://ismailovwd_db_user:8wzJqhmYFs6tbsb4@cluster0.jkzlec8.mongodb.net/?appName=Cluster0&retryWrites=true&w=majority', {
                 retryWrites: true,
                 w: 'majority',
             }),
