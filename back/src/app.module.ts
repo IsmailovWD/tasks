@@ -9,7 +9,9 @@ import { ProfileModule } from './profile/profile.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    MongooseModule.forRoot(process.env.MONGO_URI || ''),
+    MongooseModule.forRoot(
+      'mongodb://ismailovwd_db_user:TRJGTMrORRVkSzGH@cluster0.njwclrr.mongodb.net/?appName=Cluster0',
+    ),
     UsersModule,
     AuthModule,
     TelegramModule,
