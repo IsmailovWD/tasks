@@ -11,6 +11,10 @@ import { ProfileModule } from './profile/profile.module';
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(
       'mongodb+srv://ismailovwd_db_user:TRJGTMrORRVkSzGH@cluster0.njwclrr.mongodb.net/?appName=Cluster0',
+      {
+        retryWrites: true,
+        w: 'majority',
+      },
     ),
     UsersModule,
     AuthModule,
